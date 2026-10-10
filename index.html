@@ -1,181 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <base target="_top">
-  <meta charset="UTF-8">
-  <meta name="theme-color" content="#172554">
-  <title>Annual Fest 2026 Coupon Manager</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  <style>
-    :root{--navy:#172554;--ink:#172033;--muted:#667085;--line:#e6eaf2;--paper:#f4f7fc;--blue:#3157c8;--teal:#078b84;--gold:#f2ac34;--white:#fff;--shadow:0 12px 34px #192b5012}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}button,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:20px 22px 48px}.hero{position:relative;overflow:hidden;border-radius:25px;padding:28px 32px;color:#fff;background:radial-gradient(circle at 86% 12%,#ffce704d,transparent 24%),linear-gradient(115deg,#172554 5%,#27449a 58%,#3977ac);box-shadow:0 18px 42px #182d6040}.hero:after{content:'✦';position:absolute;right:8%;top:8px;font-size:126px;color:#ffffff12}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase;color:#ffdda0}.hero h1{font:800 clamp(24px,4vw,38px)/1.15 Manrope,sans-serif;letter-spacing:-.035em;margin:9px 0 7px}.hero p{margin:0;color:#e2e9ff;font-size:14px}.hero-row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:20px}.fest-chip{border:1px solid #ffffff55;background:#ffffff15;padding:10px 14px;border-radius:30px;font-size:12px;font-weight:800;white-space:nowrap}.nav{display:flex;gap:8px;margin:19px 0}.nav button{border:0;border-radius:12px;padding:12px 17px;background:transparent;color:#62708c;font-weight:800}.nav button.active{background:#fff;color:var(--navy);box-shadow:var(--shadow)}.section{display:none}.section.active{display:block}.card{background:var(--white);border:1px solid #e8edf5;border-radius:18px;box-shadow:var(--shadow)}.entry-layout{max-width:680px;margin:18px auto}.entry-card{padding:clamp(20px,4vw,34px)}.section-kicker{font-size:11px;color:var(--blue);letter-spacing:.15em;font-weight:800;text-transform:uppercase}.entry-card h2,.section-title{font:800 23px Manrope,sans-serif;margin:8px 0 5px;letter-spacing:-.025em}.subtle{margin:0;color:var(--muted);font-size:14px}.field{display:block;margin-top:22px}.field span{display:block;margin-bottom:8px;font-size:13px;font-weight:800;color:#344054}.field select{width:100%;height:58px;border:1px solid #d6deeb;border-radius:13px;padding:0 15px;background:#fff;color:#25324b;font-size:17px;outline:none}.field select:focus{border-color:#4970da;box-shadow:0 0 0 3px #4970da1f}.coupon-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px}.coupon-choice label{position:relative}.coupon-choice input{position:absolute;opacity:0}.coupon-choice span{display:flex;align-items:center;justify-content:center;height:70px;border:1.5px solid #d6deeb;border-radius:14px;color:#42506c;font-size:23px;font-weight:800;cursor:pointer}.coupon-choice input:checked+span{background:#edf3ff;border-color:#3157c8;color:#2448b6;box-shadow:0 0 0 3px #3157c81a}.submit{width:100%;height:62px;margin-top:24px;border:0;border-radius:14px;background:linear-gradient(100deg,#2448b6,#3974d1);color:#fff;font-size:17px;font-weight:800;letter-spacing:.04em;box-shadow:0 8px 18px #3157c833}.submit:disabled{opacity:.65;cursor:wait}.quick-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}.quick{height:48px;border:1px solid #dce4f1;border-radius:12px;background:#fff;color:#3157c8;font-weight:800}.message{display:none;margin-top:16px;padding:13px 15px;border-radius:11px;font-weight:700;font-size:14px}.message.show{display:block}.message.success{background:#eaf8f1;color:#137448}.message.error{background:#fff0ed;color:#b33c2e}.preserve-note{text-align:center;color:#8290a8;font-size:12px;margin-top:14px}.dashboard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 15px}.dash-actions{display:flex;gap:9px;flex-wrap:wrap}.action{border:1px solid #d8e0ee;background:#fff;border-radius:11px;padding:11px 14px;color:#30405e;font-weight:800}.action.primary{background:var(--navy);color:white;border-color:var(--navy)}.winner-panel{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:12px;padding:19px;background:linear-gradient(115deg,#172554,#273d79);border-radius:19px;color:#fff;box-shadow:var(--shadow)}.winner-main{grid-row:span 1;padding:3px 9px}.winner-label{font-size:11px;letter-spacing:.16em;color:#ffdc91;font-weight:800}.winner-name{font:800 clamp(21px,3vw,28px) Manrope,sans-serif;margin:9px 0 4px}.winner-total{color:#e2e9ff;font-size:14px}.leader{border-left:1px solid #ffffff32;padding:7px 14px}.leader small{display:block;color:#c6d3fb;font-weight:800;font-size:11px;letter-spacing:.13em}.leader strong{display:block;font-size:17px;line-height:1.35;margin-top:8px}.leader em{font-style:normal;color:#ffd887;font-size:14px}.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin:13px 0}.metric{padding:16px}.metric .label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#72809a;font-weight:800}.metric strong{display:block;font:800 22px Manrope,sans-serif;margin:7px 0 2px}.metric small{font-size:12px;color:#738099}.metric.total{background:#eff4ff;border-color:#dfe8ff}.metric.grand{background:#e9f7f3;border-color:#d4eee6}.charts{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin:13px 0}.chart-card{padding:17px;min-width:0}.chart-card h3{font:800 14px Manrope,sans-serif;margin:1px 0 15px}.chart-wrap{height:225px;position:relative}.table-card{overflow:hidden;margin-top:13px}.table-title{padding:18px 19px 8px;display:flex;align-items:end;justify-content:space-between}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:930px;font-size:13px}th,td{padding:12px 13px;text-align:right;border-bottom:1px solid #edf0f5;white-space:nowrap}th{background:#f8faff;color:#6d7990;font-size:10px;text-transform:uppercase;letter-spacing:.07em}th:first-child,td:first-child{text-align:left;padding-left:19px}td:first-child{font-weight:800;color:#263653}.group-head th{text-align:center;color:#2447a7;background:#eef3ff}.last-total{font-weight:800;color:#183b9b}.timestamp{text-align:right;color:#77839a;font-size:11px;margin:10px 3px}.no-chart{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#7a8699;font-size:13px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:850px){.stats-grid{grid-template-columns:repeat(3,1fr)}.charts{grid-template-columns:1fr 1fr}.chart-card:first-child{grid-column:1/-1}.winner-panel{grid-template-columns:1fr 1fr}.winner-main{grid-column:1/-1}.leader{border-left:0;border-top:1px solid #ffffff32;padding:13px 8px 3px}}
-    @media(max-width:560px){.shell{padding:12px 12px 35px}.hero{padding:23px 20px;border-radius:20px}.hero-row{align-items:flex-start;flex-direction:column;gap:12px}.hero:after{right:1%;top:24px;font-size:88px}.hero p{max-width:270px;line-height:1.5}.nav{margin:13px 0}.nav button{flex:1;padding:12px 7px;font-size:13px}.entry-layout{margin:12px auto}.entry-card{padding:22px 18px}.dashboard-head{align-items:flex-start;flex-direction:column}.dash-actions{width:100%}.dash-actions button{flex:1}.winner-panel{gap:7px;padding:16px}.leader{padding:12px 4px 4px}.leader strong{font-size:15px}.stats-grid{grid-template-columns:repeat(2,1fr);gap:8px}.metric{padding:13px}.metric strong{font-size:19px}.charts{grid-template-columns:1fr}.chart-card:first-child{grid-column:auto}.chart-wrap{height:210px}.table-title{align-items:flex-start;flex-direction:column;gap:4px}}
-  </style>
-</head>
-<body>
-  <main class="shell">
-    <header class="hero">
-      <div class="hero-row">
-        <div><div class="eyebrow">Bal Vidya Mandir Sr. Sec. School, Sambhal</div><h1>Annual Fest Coupon Manager</h1><p>Every coupon counts. Track your society’s collection live.</p></div>
-        <div class="fest-chip">✦ ANNUAL FEST 2026</div>
-      </div>
-    </header>
-    <nav class="nav" aria-label="Main navigation">
-      <button class="active" data-page="entry">📝 &nbsp; ENTRY</button>
-      <button data-page="dashboard">📊 &nbsp; LIVE DASHBOARD</button>
-    </nav>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172554">
+    <title>Annual Fest 2026 Coupon Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Bal Vidya Mandir Sr. Sec. School, Sambhal</p>
+          <h1>Annual Fest Coupon Manager</h1>
+          <p>Record society coupons and track live collections.</p>
+        </div>
+        <span class="fest-pill">Annual Fest 2026</span>
+      </header>
 
-    <section id="entry" class="section active" aria-labelledby="entry-title">
-      <div class="entry-layout"><div class="card entry-card">
-        <div class="section-kicker">Quick coupon entry</div><h2 id="entry-title">Record a coupon</h2><p class="subtle">Choose the society and category, then save one coupon at a time.</p>
-        <form id="entryForm" novalidate>
-          <label class="field"><span>Society Name</span><select id="society" required><option value="">Select society</option><option value="TINKER VERSE">TINKER VERSE</option><option value="TECH-TITANS">TECH-TITANS</option><option value="ECO WARRIORS">ECO WARRIORS</option><option value="RECYCLERS">RECYCLERS</option><option value="STAGE CRAFT">STAGE CRAFT</option><option value="INK MASTERS">INK MASTERS</option><option value="PAPER CRAFTERS">PAPER CRAFTERS</option><option value="COOL COOKS">COOL COOKS</option><option value="EUREKA">EUREKA</option><option value="NUMBER NAVIGATORS">NUMBER NAVIGATORS</option><option value="FIT LIFE">FIT LIFE</option><option value="SYMPHONY">SYMPHONY</option><option value="ARTISAN NEST">ARTISAN NEST</option></select></label>
-          <label class="field"><span>Category</span><select id="category" required><option value="">Select category</option><option value="Junior">Junior</option><option value="Senior">Senior</option></select></label>
-          <div class="field"><span>Coupon</span><div class="coupon-choice"><label><input type="radio" name="coupon" value="20"><span>₹20</span></label><label><input type="radio" name="coupon" value="50"><span>₹50</span></label></div></div>
-          <button id="submitButton" class="submit" type="submit">SUBMIT</button>
-          <div class="quick-row"><button class="quick" type="button" data-coupon="20">+20 QUICK ENTRY</button><button class="quick" type="button" data-coupon="50">+50 QUICK ENTRY</button></div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="active" type="button" data-page="entry">Entry</button>
+        <button type="button" data-page="dashboard">Live Dashboard</button>
+      </nav>
+
+      <section id="entry" class="page active" aria-labelledby="entryTitle">
+        <form id="entryForm" class="entry-card">
+          <p class="section-kicker">Quick coupon entry</p>
+          <h2 id="entryTitle">Record a coupon</h2>
+          <p class="subtle">Choose the society and category, then save one coupon at a time.</p>
+
+          <label class="field" for="society">
+            <span>Society Name</span>
+            <select id="society" required>
+              <option value="">Select society</option>
+              <option value="Chitrakala">Chitrakala</option>
+              <option value="Nritya Tarang">Nritya Tarang</option>
+              <option value="Khoj Kendra">Khoj Kendra</option>
+              <option value="Swasthya Sangam">Swasthya Sangam</option>
+              <option value="Jigyasa Junction">Jigyasa Junction</option>
+              <option value="Swaranjali">Swaranjali</option>
+              <option value="Abhivyakti">Abhivyakti</option>
+              <option value="Srijan Shala">Srijan Shala</option>
+              <option value="Prakriti Rakshak">Prakriti Rakshak</option>
+              <option value="Kaushal Bodh">Kaushal Bodh</option>
+            </select>
+          </label>
+
+          <label class="field" for="category">
+            <span>Category</span>
+            <select id="category" required>
+              <option value="">Select category</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </label>
+
+          <fieldset class="field coupon-field">
+            <legend>Coupon</legend>
+            <label>
+              <input type="radio" name="coupon" value="20">
+              <span>Rs 20</span>
+            </label>
+            <label>
+              <input type="radio" name="coupon" value="50">
+              <span>Rs 50</span>
+            </label>
+          </fieldset>
+
+          <button id="submitButton" class="submit" type="submit">Submit</button>
+
+          <div class="quick-row">
+            <button class="quick" type="button" data-coupon="20">+20 Quick Entry</button>
+            <button class="quick" type="button" data-coupon="50">+50 Quick Entry</button>
+          </div>
+
           <div id="entryMessage" class="message" role="status" aria-live="polite"></div>
-          <div class="preserve-note">After saving, society and category stay selected for fast entry.</div>
+          <p class="preserve-note">After saving, society and category stay selected for fast entry.</p>
         </form>
-      </div></div>
-    </section>
+      </section>
 
-    <section id="dashboard" class="section" aria-labelledby="dashboard-title">
-      <div class="dashboard-head"><div><div class="section-kicker">Live collection summary</div><h2 id="dashboard-title" class="section-title">Society leaderboard</h2></div><div class="dash-actions"><button id="refreshButton" class="action primary">🔄 REFRESH DASHBOARD</button><button id="exportButton" class="action">⇩ EXPORT REPORT</button></div></div>
-      <div class="winner-panel">
-        <div class="winner-main"><div class="winner-label">🏆 ANNUAL FEST SOCIETY WINNER</div><div id="winnerName" class="winner-name">Loading…</div><div id="winnerTotal" class="winner-total"></div></div>
-        <div class="leader"><small>JUNIOR LEADER</small><strong id="juniorLeaderName">—</strong><em id="juniorLeaderTotal"></em></div>
-        <div class="leader"><small>SENIOR LEADER</small><strong id="seniorLeaderName">—</strong><em id="seniorLeaderTotal"></em></div>
-      </div>
-      <div class="stats-grid">
-        <div class="card metric"><div class="label">₹20 Coupons</div><strong id="coupon20Count">0 coupons</strong><small id="coupon20Total">₹0 total value</small></div>
-        <div class="card metric"><div class="label">₹50 Coupons</div><strong id="coupon50Count">0 coupons</strong><small id="coupon50Total">₹0 total value</small></div>
-        <div class="card metric total"><div class="label">All Coupons</div><strong id="grandCount">0 coupons</strong><small>Total coupon count</small></div>
-        <div class="card metric grand"><div class="label">Grand Total</div><strong id="grandTotal">₹0</strong><small>Amount collected</small></div>
-        <div class="card metric"><div class="label">Junior</div><strong id="juniorCount">0 coupons</strong><small id="juniorTotal">₹0 collection</small></div>
-        <div class="card metric"><div class="label">Senior</div><strong id="seniorCount">0 coupons</strong><small id="seniorTotal">₹0 collection</small></div>
-      </div>
-      <div class="charts">
-        <div class="card chart-card"><h3>Society-wise Total Collection</h3><div class="chart-wrap"><canvas id="societyChart" aria-label="Society collection bar chart"></canvas><div class="no-chart" hidden></div></div></div>
-        <div class="card chart-card"><h3>Junior vs Senior Collection</h3><div class="chart-wrap"><canvas id="categoryChart" aria-label="Junior and Senior chart"></canvas><div class="no-chart" hidden></div></div></div>
-        <div class="card chart-card"><h3>₹20 vs ₹50 Coupon Distribution</h3><div class="chart-wrap"><canvas id="couponChart" aria-label="Coupon distribution chart"></canvas><div class="no-chart" hidden></div></div></div>
-      </div>
-      <div class="card table-card"><div class="table-title"><div><h3 class="section-title" style="font-size:17px;margin:0">Society Breakdown</h3><div class="subtle" style="font-size:12px;margin-top:4px">Sorted by overall collection · all amounts in rupees</div></div></div>
-        <div class="table-wrap"><table><thead><tr class="group-head"><th rowspan="2">Society</th><th colspan="3">Junior</th><th colspan="3">Senior</th><th rowspan="2">Overall Total</th></tr><tr><th>₹20</th><th>₹50</th><th>Total</th><th>₹20</th><th>₹50</th><th>Total</th></tr></thead><tbody id="societyTable"></tbody></table></div>
-      </div>
-      <div id="dashboardMessage" class="message" role="status"></div><div id="lastUpdated" class="timestamp"></div>
-    </section>
-  </main>
-  <script>
-    'use strict';
-    const $ = id => document.getElementById(id);
-    const money = value => '₹' + Number(value || 0).toLocaleString('en-IN');
-    let charts = {};
-    let busy = false;
+      <section id="dashboard" class="page" aria-labelledby="dashboardTitle">
+        <div class="dashboard-head">
+          <div>
+            <p class="section-kicker">Live collection summary</p>
+            <h2 id="dashboardTitle">Society leaderboard</h2>
+          </div>
+          <div class="dash-actions">
+            <button id="refreshButton" class="action primary" type="button">Refresh Dashboard</button>
+            <button id="exportButton" class="action" type="button">Export Report</button>
+          </div>
+        </div>
 
-    document.querySelectorAll('.nav button').forEach(button => button.addEventListener('click', () => {
-      document.querySelectorAll('.nav button').forEach(item => item.classList.toggle('active', item === button));
-      document.querySelectorAll('.section').forEach(section => section.classList.toggle('active', section.id === button.dataset.page));
-      if (button.dataset.page === 'dashboard') loadDashboard();
-    }));
+        <section class="winner-panel" aria-label="Leaders">
+          <div class="winner-main">
+            <p>Annual Fest Society Winner</p>
+            <strong id="winnerName">Loading...</strong>
+            <span id="winnerTotal"></span>
+          </div>
+          <div class="leader">
+            <small>Junior Leader</small>
+            <strong id="juniorLeaderName">No entries yet</strong>
+            <span id="juniorLeaderTotal"></span>
+          </div>
+          <div class="leader">
+            <small>Senior Leader</small>
+            <strong id="seniorLeaderName">No entries yet</strong>
+            <span id="seniorLeaderTotal"></span>
+          </div>
+        </section>
 
-    function showEntryMessage(text, kind) {
-      const box = $('entryMessage'); box.textContent = text; box.className = 'message show ' + kind;
-    }
-    function readForm(couponOverride) {
-      return {
-        society: $('society').value,
-        category: $('category').value,
-        coupon: couponOverride || (document.querySelector('input[name="coupon"]:checked') || {}).value
-      };
-    }
-    function validateEntry(entry) {
-      if (!entry.society) return 'Please select a society.';
-      if (!entry.category) return 'Please select a category.';
-      if (!entry.coupon) return 'Please select ₹20 or ₹50.';
-      return '';
-    }
-    function saveCurrent(couponOverride) {
-      if (busy) return;
-      const entry = readForm(couponOverride);
-      const issue = validateEntry(entry);
-      if (issue) { showEntryMessage(issue, 'error'); return; }
-      busy = true; $('submitButton').disabled = true;
-      document.querySelectorAll('.quick').forEach(button => button.disabled = true);
-      $('entryMessage').className = 'message';
-      google.script.run
-        .withSuccessHandler(() => {
-          showEntryMessage('Entry Saved Successfully', 'success');
-          document.querySelectorAll('input[name="coupon"]').forEach(input => { input.checked = false; });
-          busy = false; $('submitButton').disabled = false;
-          document.querySelectorAll('.quick').forEach(button => button.disabled = false);
-        })
-        .withFailureHandler(error => {
-          showEntryMessage((error && error.message && error.message.indexOf('Unable to save') >= 0) ? error.message : 'Unable to save entry. Please try again.', 'error');
-          busy = false; $('submitButton').disabled = false;
-          document.querySelectorAll('.quick').forEach(button => button.disabled = false);
-        })
-        .saveEntry(entry);
-    }
-    $('entryForm').addEventListener('submit', event => { event.preventDefault(); saveCurrent(); });
-    document.querySelectorAll('.quick').forEach(button => button.addEventListener('click', () => {
-      const coupon = button.dataset.coupon;
-      document.querySelector('input[name="coupon"][value="' + coupon + '"]').checked = true;
-      saveCurrent(coupon);
-    }));
+        <section class="stats-grid" aria-label="Totals">
+          <article class="metric"><span>Rs 20 Coupons</span><strong id="coupon20Count">0 coupons</strong><small id="coupon20Total">Rs 0 total value</small></article>
+          <article class="metric"><span>Rs 50 Coupons</span><strong id="coupon50Count">0 coupons</strong><small id="coupon50Total">Rs 0 total value</small></article>
+          <article class="metric total"><span>All Coupons</span><strong id="grandCount">0 coupons</strong><small>Total coupon count</small></article>
+          <article class="metric grand"><span>Grand Total</span><strong id="grandTotal">Rs 0</strong><small>Amount collected</small></article>
+          <article class="metric"><span>Junior</span><strong id="juniorCount">0 coupons</strong><small id="juniorTotal">Rs 0 collection</small></article>
+          <article class="metric"><span>Senior</span><strong id="seniorCount">0 coupons</strong><small id="seniorTotal">Rs 0 collection</small></article>
+        </section>
 
-    function setLeader(nameId, totalId, leader) {
-      $(nameId).textContent = leader.societies.length ? leader.societies.join(' · ') : 'No entries yet';
-      $(totalId).textContent = leader.societies.length ? money(leader.total) : '';
-    }
-    function renderDashboard(data) {
-      $('winnerName').textContent = data.winner.societies.length ? data.winner.societies.join(' · ') : 'No entries yet';
-      $('winnerTotal').textContent = data.winner.societies.length ? 'Total Collection: ' + money(data.winner.total) : 'Add the first coupon to start the leaderboard.';
-      setLeader('juniorLeaderName', 'juniorLeaderTotal', data.juniorLeader);
-      setLeader('seniorLeaderName', 'seniorLeaderTotal', data.seniorLeader);
-      const s = data.stats;
-      $('coupon20Count').textContent = s.coupon20.count.toLocaleString('en-IN') + ' coupons'; $('coupon20Total').textContent = money(s.coupon20.total) + ' total value';
-      $('coupon50Count').textContent = s.coupon50.count.toLocaleString('en-IN') + ' coupons'; $('coupon50Total').textContent = money(s.coupon50.total) + ' total value';
-      $('grandCount').textContent = s.grandTotal.count.toLocaleString('en-IN') + ' coupons'; $('grandTotal').textContent = money(s.grandTotal.total);
-      $('juniorCount').textContent = s.categories.Junior.count.toLocaleString('en-IN') + ' coupons'; $('juniorTotal').textContent = money(s.categories.Junior.total) + ' collection';
-      $('seniorCount').textContent = s.categories.Senior.count.toLocaleString('en-IN') + ' coupons'; $('seniorTotal').textContent = money(s.categories.Senior.total) + ' collection';
-      $('societyTable').innerHTML = data.societies.map(row => '<tr><td>' + escapeHtml(row.society) + '</td><td>' + money(row.junior20Total) + '</td><td>' + money(row.junior50Total) + '</td><td>' + money(row.juniorTotal) + '</td><td>' + money(row.senior20Total) + '</td><td>' + money(row.senior50Total) + '</td><td>' + money(row.seniorTotal) + '</td><td class="last-total">' + money(row.overallTotal) + '</td></tr>').join('');
-      drawCharts(data);
-      $('lastUpdated').textContent = 'Updated ' + new Date(data.generatedAt).toLocaleString('en-IN');
-      $('dashboardMessage').className = 'message';
-    }
-    function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char])); }
-    function drawCharts(data) {
-      if (typeof Chart === 'undefined') {
-        document.querySelectorAll('.no-chart').forEach(el => { el.hidden = false; el.textContent = 'Charts are unavailable. Refresh to try again.'; });
-        return;
-      }
-      document.querySelectorAll('.no-chart').forEach(el => { el.hidden = true; });
-      Object.values(charts).forEach(chart => chart.destroy());
-      charts.society = new Chart($('societyChart'), {type:'bar',data:{labels:data.societies.map(item => item.society),datasets:[{label:'Overall collection',data:data.societies.map(item=>item.overallTotal),backgroundColor:'#3157c8',borderRadius:6}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>money(ctx.raw)}}},scales:{x:{beginAtZero:true,ticks:{callback:value=>money(value)}},y:{ticks:{font:{size:10}}}}}});
-      charts.category = new Chart($('categoryChart'), {type:'bar',data:{labels:['Junior','Senior'],datasets:[{data:[data.stats.categories.Junior.total,data.stats.categories.Senior.total],backgroundColor:['#078b84','#f2ac34'],borderRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>money(ctx.raw)}}},scales:{y:{beginAtZero:true,ticks:{callback:value=>money(value)}}}}});
-      charts.coupon = new Chart($('couponChart'), {type:'doughnut',data:{labels:['₹20 coupons','₹50 coupons'],datasets:[{data:[data.stats.coupon20.total,data.stats.coupon50.total],backgroundColor:['#3157c8','#f2ac34'],borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:14}},tooltip:{callbacks:{label:ctx=>ctx.label+': '+money(ctx.raw)}}}}});
-    }
-    function loadDashboard() {
-      $('refreshButton').disabled = true; $('refreshButton').textContent = 'Loading…'; $('dashboardMessage').className = 'message';
-      google.script.run.withSuccessHandler(data => { renderDashboard(data); $('refreshButton').disabled = false; $('refreshButton').textContent = '🔄 REFRESH DASHBOARD'; })
-        .withFailureHandler(error => { $('dashboardMessage').textContent = error && error.message ? error.message : 'Unable to load dashboard data. Please refresh and try again.'; $('dashboardMessage').className = 'message show error'; $('refreshButton').disabled = false; $('refreshButton').textContent = '🔄 REFRESH DASHBOARD'; })
-        .getDashboardData();
-    }
-    $('refreshButton').addEventListener('click', loadDashboard);
-    function exportReport() {
-      const rows = Array.from(document.querySelectorAll('#societyTable tr')).map(tr => Array.from(tr.children).map(td => td.textContent));
-      const headings = ['Society','Junior ₹20','Junior ₹50','Junior Total','Senior ₹20','Senior ₹50','Senior Total','Overall Total'];
-      const lines = [headings, ...rows].map(row => row.map(value => '"' + String(value).replace(/"/g, '""') + '"').join(',')).join('\r\n');
-      const blob = new Blob(['\uFEFF' + lines], {type:'text/csv;charset=utf-8;'}); const url = URL.createObjectURL(blob);
-      const link = document.createElement('a'); link.href = url; link.download = 'annual-fest-2026-society-report.csv'; link.click(); URL.revokeObjectURL(url);
-    }
-    $('exportButton').addEventListener('click', exportReport);
-    loadDashboard();
-  </script>
-</body>
+        <section class="charts" aria-label="Charts">
+          <article class="chart-card">
+            <h3>Society-wise Total Collection</h3>
+            <div class="chart-wrap"><canvas id="societyChart"></canvas><div class="no-chart" hidden></div></div>
+          </article>
+          <article class="chart-card">
+            <h3>Junior vs Senior Collection</h3>
+            <div class="chart-wrap"><canvas id="categoryChart"></canvas><div class="no-chart" hidden></div></div>
+          </article>
+          <article class="chart-card">
+            <h3>Rs 20 vs Rs 50 Coupon Distribution</h3>
+            <div class="chart-wrap"><canvas id="couponChart"></canvas><div class="no-chart" hidden></div></div>
+          </article>
+        </section>
+
+        <section class="table-card">
+          <div class="table-title">
+            <h3>Society Breakdown</h3>
+            <p>Sorted by overall collection. All amounts are in rupees.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr class="group-head">
+                  <th rowspan="2">Society</th>
+                  <th colspan="3">Junior</th>
+                  <th colspan="3">Senior</th>
+                  <th rowspan="2">Overall Total</th>
+                </tr>
+                <tr>
+                  <th>Rs 20</th>
+                  <th>Rs 50</th>
+                  <th>Total</th>
+                  <th>Rs 20</th>
+                  <th>Rs 50</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="societyTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <div id="dashboardMessage" class="message" role="status"></div>
+        <div id="lastUpdated" class="timestamp"></div>
+      </section>
+    </main>
+  </body>
 </html>
