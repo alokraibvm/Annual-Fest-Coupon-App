@@ -1,6 +1,6 @@
 'use strict';
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbw3BIHMNkOJOq9akrAh87i4cfpPSEfyYHsGNWGlhKSTcmyB2ojaSwdDdKXYRS7oXIT28A/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwhkkTho7BS6lHdyP3Dt2HV5HTYIRabEYMTQ42e2RKb2yBHqAoR9BHYhRnrdwle1We2og/exec';
 
 const $ = id => document.getElementById(id);
 const money = value => 'Rs ' + Number(value || 0).toLocaleString('en-IN');
