@@ -228,7 +228,7 @@ function loadDashboard() {
   $('refreshButton').textContent = 'Loading...';
   $('dashboardMessage').className = 'message';
 
-  callApi('dashboard')
+  callApi('couponDashboard')
     .then(renderDashboard)
     .catch(error => {
       $('dashboardMessage').textContent = error.message || 'Unable to load dashboard data. Please refresh and try again.';
